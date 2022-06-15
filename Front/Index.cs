@@ -7,6 +7,6 @@ namespace Front
 {
     public class Index
     {
-        
+        <div><h2>Teste</h2></div>
     }
 }
