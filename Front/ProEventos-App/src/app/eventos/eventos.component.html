@@ -1,7 +1,11 @@
 <h1>Eventos de Components</h1>
 
 <div *ngFor="let evento of eventos">
+  <p><strong>Id: </strong>{{evento.eventoID}}</p>
   <p><strong>Tema: </strong> {{evento.tema}}</p>
-<p><strong>Local: </strong> {{evento.local}}</p>
+  <p><strong>Local: </strong> {{evento.local}}</p>
+  <p><strong>Data: </strong> {{evento.dataEvento}}</p>
+  <p><strong>Lote: </strong>{{evento.lote}}</p>
+  <p><strong>Imagem: </strong>{{evento.imagemUrl}}</p>
 <hr>
 </div>
