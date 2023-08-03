@@ -1,11 +1,58 @@
 <h1>Eventos de Components</h1>
-
-<div *ngFor="let evento of eventos">
-  <p><strong>Id: </strong>{{evento.eventoID}}</p>
-  <p><strong>Tema: </strong> {{evento.tema}}</p>
-  <p><strong>Local: </strong> {{evento.local}}</p>
-  <p><strong>Data: </strong> {{evento.dataEvento}}</p>
-  <p><strong>Lote: </strong>{{evento.lote}}</p>
-  <p><strong>Imagem: </strong>{{evento.imagemUrl}}</p>
 <hr>
+<div class="form-inline">
+  <div class="form-group mb-2">
+    <label class="mr-2">Filtro:   </label>
+    <input type="text"
+    class="form-control mr-2"
+    placeholder="buscar"
+    [(ngModel)]="filtroLista"
+    >
+  </div>
 </div>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>*</th>
+      <th>
+        <button type="button" class="btn btn-outline-light btn-sm" (click)='alterarImagem()'>
+          {{!mostraImagem ? "Exibir" : "Ocultar"}}
+
+        </button>
+      </th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Qtde Pessoas</th>
+      <th>Lote</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="eventos && eventos.length">
+    <tr *ngFor="let evento of eventosFiltrados">
+      <td>{{evento.eventoID}}</td>
+      <td><img [collapse]= "!mostraImagem" src="/assets/{{evento.imagemUrl}}"
+        [isAnimated]="true"
+        [style.width.px]="larguraImagem"
+        [style.margin.px]="margemImagem">
+      </td>
+      <td>{{evento.tema}}</td>
+      <td>{{evento.local}}</td>
+      <td>{{evento.dataEvento}}</td>
+      <td>{{evento.qtdePessoas}}</td>
+      <td>{{evento.lote}}</td>
+      <td>
+        <button class="btn btn-primary">Editar</button>
+        &nbsp;
+        <button class="btn btn-danger">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!eventos">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h4> Evento Encontrado </h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
